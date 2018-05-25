@@ -25,7 +25,7 @@ use app\library\ItemsLibrary;
 <?php
 
 $ground = new \app\models\Inventory();
-$ground->add(\app\library\ItemsLibrary::FOOD_PACK, 10);
+$ground->add(\app\library\ItemsLibrary::FOOD_PACK, 1,0,10);
 $ground->add(\app\library\ItemsLibrary::MEDPACK);
 $ground->add(\app\library\ItemsLibrary::FLASHLIGHT);
 $ground->add(\app\library\ItemsLibrary::WARM_CLOTH);

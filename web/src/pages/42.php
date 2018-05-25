@@ -12,13 +12,13 @@
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
     if($gamePage->character->hasSkill(\app\library\SkillsLibrary::SHOOTING)
         && $gamePage->character->hasItem(\app\library\ItemsLibrary::GUN)
-        && $gamePage->character->hasItem(\app\library\ItemsLibrary::GUN_AMMO)
+        && $gamePage->character->inventory[\app\library\ItemsLibrary::GUN]->count
     )
         $gamePage->addAnswer(
             'Выстрелить из пистолета в ответ',
             64,
             function ($e, \app\models\GamePage $gamePage){
-                $gamePage->character->removeFromInventory(\app\library\ItemsLibrary::GUN_AMMO, 1);
+                $gamePage->character->decreaseInventoryItemCnt(\app\library\ItemsLibrary::GUN, 1);
             }
         );
 

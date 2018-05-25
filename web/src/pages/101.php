@@ -36,7 +36,7 @@ $this->setScenario('shop');
 
 $inv = new \app\models\Inventory();
 $inv->add(\app\library\ItemsLibrary::FUR_COAT, 1, 5);
-$inv->add(\app\library\ItemsLibrary::FOOD_PACK, 1, 4);
+$inv->add(\app\library\ItemsLibrary::FOOD_PACK, 1, 4, 8);
 
 $this->params = [
     'shop' => $inv->toArray(),

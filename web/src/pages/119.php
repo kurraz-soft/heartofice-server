@@ -30,13 +30,13 @@
 $this->setScenario('takeItems');
 
 $inv = new \app\models\Inventory();
-$inv->add(\app\library\ItemsLibrary::GUN);
-$inv->add(\app\library\ItemsLibrary::GUN_AMMO,2);
-$inv->add(\app\library\ItemsLibrary::KNIFE, 2);
-$inv->add(\app\library\ItemsLibrary::POLARIZED_GLASSES, 1);
-$inv->add(\app\library\ItemsLibrary::WARM_CLOTH, 1);
-$inv->add(\app\library\ItemsLibrary::BINOCULARS, 1);
-$inv->add(\app\library\ItemsLibrary::FOOD_PACK, 6);
+$inv->add(\app\library\ItemsLibrary::GUN, 2);
+$inv->add(\app\library\ItemsLibrary::KNIFE);
+$inv->add(\app\library\ItemsLibrary::KNIFE);
+$inv->add(\app\library\ItemsLibrary::POLARIZED_GLASSES);
+$inv->add(\app\library\ItemsLibrary::WARM_CLOTH);
+$inv->add(\app\library\ItemsLibrary::BINOCULARS);
+$inv->add(\app\library\ItemsLibrary::FOOD_PACK, 1,0,6);
 
 $this->params = [
     'takeItems' => $inv->toArray(),
@@ -44,7 +44,7 @@ $this->params = [
 
 $this->attachCalculations(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->character->removeFromInventory(\app\library\ItemsLibrary::GUN_AMMO, 2);
+    $gamePage->character->decreaseInventoryItemCnt(\app\library\ItemsLibrary::GUN, 2);
 
 });
 

@@ -28,7 +28,7 @@
 $this->setScenario('takeItems');
 
 $inv = new \app\models\Inventory();
-$inv->add(\app\library\ItemsLibrary::FOOD_PACK, 2);
+$inv->add(\app\library\ItemsLibrary::FOOD_PACK, 1,0,2);
 
 $this->params = [
     'takeItems' => $inv->toArray(),

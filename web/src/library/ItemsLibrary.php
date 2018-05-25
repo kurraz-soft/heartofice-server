@@ -10,7 +10,6 @@ namespace app\library;
 class ItemsLibrary
 {
     const GUN = 'Бризальтовый пистолет';
-    const GUN_AMMO = 'Заряды для пистолета';
     const PSY_FOCUSER = 'Пси-фокусировщик';
     const SOUND_GRENADE = 'Шумовая граната';
     const BURREK = 'Буррек';
@@ -27,7 +26,6 @@ class ItemsLibrary
     const GAS_MASK = 'Противогаз';
     const BINOCULARS = 'Бинокль';
     const RIFLE = 'Бризальтовое ружье';
-    const RIFLE_AMMO = 'Заряды для ружья';
     const POLARIZED_GLASSES = 'Поляризационные очки';
     const AEROCAR_SCAT = 'Аэрокар "Скат"';
     const FOOD_PACK = 'Упаковка с едой';
@@ -37,9 +35,14 @@ class ItemsLibrary
     const STASIS_BOMB = 'Стазис-бомба';
 
     const WEIGHTS = [
-        self::GUN_AMMO => 0,
-        self::RIFLE_AMMO => 0,
         self::AEROCAR_SCAT => 0,
         self::CYBORG_PARTS => 0,
+    ];
+
+    const TYPE_FIREARM = 'firearm';
+
+    const TYPES = [
+        self::GUN => self::TYPE_FIREARM,
+        self::RIFLE => self::TYPE_FIREARM,
     ];
 }

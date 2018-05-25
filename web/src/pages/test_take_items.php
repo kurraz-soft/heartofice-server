@@ -5,9 +5,9 @@
 $this->setScenario('takeItems');
 
 $inv = new \app\models\Inventory();
-$inv->add(\app\library\ItemsLibrary::GUN);
-$inv->add(\app\library\ItemsLibrary::GUN_AMMO,5);
-$inv->add(\app\library\ItemsLibrary::FOOD_PACK, 10);
+$inv->add(\app\library\ItemsLibrary::GUN, 6);
+$inv->add(\app\library\ItemsLibrary::GUN, 6);
+$inv->add(\app\library\ItemsLibrary::FOOD_PACK, 1, 0, 6);
 
 $this->params = [
     'takeItems' => $inv->toArray(),

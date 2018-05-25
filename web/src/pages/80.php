@@ -19,21 +19,21 @@ use app\library\ItemsLibrary;
     <br />
     (+1 <?= ItemsLibrary::POLARIZED_GLASSES ?>)
     <br />
-    (+1 <?= ItemsLibrary::RIFLE ?>)
-    <br />
-    (+2 <?= ItemsLibrary::RIFLE_AMMO ?>)
+    (+1 <?= ItemsLibrary::RIFLE ?>(2))
 </p>
 <?php
 
-$this->attachCalculations(function ($e, \app\models\GamePage $gamePage){
+$this->setScenario('takeItems');
 
-    $gamePage->character->setInventoryItem(ItemsLibrary::FLASHLIGHT);
-    $gamePage->character->setInventoryItem(ItemsLibrary::BINOCULARS);
-    $gamePage->character->setInventoryItem(ItemsLibrary::POLARIZED_GLASSES);
-    $gamePage->character->setInventoryItem(ItemsLibrary::RIFLE);
-    $gamePage->character->setInventoryItem(ItemsLibrary::RIFLE_AMMO, 2);
+$inv = new \app\models\Inventory();
+$inv->add(\app\library\ItemsLibrary::FLASHLIGHT);
+$inv->add(\app\library\ItemsLibrary::BINOCULARS);
+$inv->add(\app\library\ItemsLibrary::POLARIZED_GLASSES);
+$inv->add(\app\library\ItemsLibrary::RIFLE, 2);
 
-});
+$this->params = [
+    'takeItems' => $inv->toArray(),
+];
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 

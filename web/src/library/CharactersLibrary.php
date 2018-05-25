@@ -68,10 +68,6 @@ class CharactersLibrary
                 'items' => [
                     [
                         'name' => ItemsLibrary::GUN,
-                        'count' => 1,
-                    ],
-                    [
-                        'name' => ItemsLibrary::GUN_AMMO,
                         'count' => 6,
                     ],
                 ],
@@ -94,10 +90,6 @@ class CharactersLibrary
                 'items' => [
                     [
                         'name' => ItemsLibrary::GUN,
-                        'count' => 1,
-                    ],
-                    [
-                        'name' => ItemsLibrary::GUN_AMMO,
                         'count' => 6,
                     ],
                     [

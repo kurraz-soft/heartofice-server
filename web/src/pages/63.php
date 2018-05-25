@@ -12,7 +12,7 @@
 
 $this->attachCalculations(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->character->removeFromInventory(\app\library\ItemsLibrary::GUN_AMMO);
+    $gamePage->character->decreaseInventoryItemCnt(\app\library\ItemsLibrary::GUN);
 
 });
 
@@ -20,7 +20,7 @@ $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
     if(
         $gamePage->character->hasSkill(\app\library\SkillsLibrary::PARADOX_CONTROL)
-            && $gamePage->character->hasItem(\app\library\ItemsLibrary::GUN_AMMO)
+            && $gamePage->character->inventory[\app\library\ItemsLibrary::GUN]->count
     )
         $gamePage->addAnswer(
             'Попытаться снять щит пси-фокусировщиком и выстрелить снова',

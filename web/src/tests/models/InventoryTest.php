@@ -22,14 +22,8 @@ class InventoryTest extends UnitTestCase
             'items' => [
                 [
                     "name" => ItemsLibrary::GUN,
-                    "count" => 1,
-                    "weight" => 1,
-                    "price" => 0,
-                ],
-                [
-                    "name" => ItemsLibrary::GUN_AMMO,
                     "count" => 6,
-                    "weight" => 0,
+                    "weight" => 1,
                     "price" => 0,
                 ],
             ],
@@ -41,8 +35,8 @@ class InventoryTest extends UnitTestCase
     {
         $inv = new Inventory();
 
+        $inv->add(ItemsLibrary::GUN, 6);
         $inv->add(ItemsLibrary::GUN, 2);
-        $inv->add(ItemsLibrary::GUN_AMMO, 2);
 
         $this->assertEquals(2, $inv->getWeightSum());
     }

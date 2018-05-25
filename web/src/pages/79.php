@@ -15,7 +15,7 @@
 
 $this->attachCalculations(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->character->removeFromInventory(\app\library\ItemsLibrary::GUN_AMMO);
+    $gamePage->character->decreaseInventoryItemCnt(\app\library\ItemsLibrary::GUN);
 
 });
 

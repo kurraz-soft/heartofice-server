@@ -38,12 +38,11 @@
 
 $ground = new \app\models\Inventory();
 $ground->add(\app\library\ItemsLibrary::GUN, 1);
-$ground->add(\app\library\ItemsLibrary::GUN_AMMO, 1);
-$ground->add(\app\library\ItemsLibrary::KNIFE, 2);
-$ground->add(\app\library\ItemsLibrary::POLARIZED_GLASSES, 1);
-$ground->add(\app\library\ItemsLibrary::WARM_CLOTH, 1);
-$ground->add(\app\library\ItemsLibrary::BINOCULARS, 1);
-$ground->add(\app\library\ItemsLibrary::FOOD_PACK, 6);
+$ground->add(\app\library\ItemsLibrary::KNIFE, 1, 0, 2);
+$ground->add(\app\library\ItemsLibrary::POLARIZED_GLASSES);
+$ground->add(\app\library\ItemsLibrary::WARM_CLOTH);
+$ground->add(\app\library\ItemsLibrary::BINOCULARS);
+$ground->add(\app\library\ItemsLibrary::FOOD_PACK, 1, 0, 6);
 
 $this->setScenario('takeItems');
 

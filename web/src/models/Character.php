@@ -52,12 +52,26 @@ class Character
 
     public function addToInventory($item, $cnt = 1)
     {
-        $this->inventory[$item] = ($this->inventory[$item] ?? 0) + $cnt;
+        $this->inventory->add($item, $cnt);
     }
 
-    public function setInventoryItem($item, $cnt = 1)
+    public function removeFromInventory($item)
     {
-        $this->inventory[$item] = $cnt;
+        unset($this->inventory[$item]);
+    }
+
+    public function decreaseInventoryItemCnt($item, $cnt = 1)
+    {
+        if(!isset($this->inventory[$item]) || $this->inventory[$item]->count < $cnt)
+            throw new \Exception('Attempt to take more than inventory has');
+
+        $this->inventory[$item]->count -= $cnt;
+        //if($this->inventory[$item] == 0) unset($this->inventory[$item]);
+    }
+
+    public function hasItem($item)
+    {
+        return isset($this->inventory[$item]);
     }
 
     public function addKeyword($word)
@@ -77,23 +91,9 @@ class Character
         return in_array($word, $this->keywords);
     }
 
-    public function removeFromInventory($item, $cnt = 1)
-    {
-        if(!isset($this->inventory[$item]) || $this->inventory[$item] < $cnt)
-            throw new \Exception('Attempt to take more than inventory has');
-
-        $this->inventory[$item] -= $cnt;
-        if($this->inventory[$item] == 0) unset($this->inventory[$item]);
-    }
-
     public function hasSkill($skill)
     {
         return in_array($skill, $this->skills);
-    }
-
-    public function hasItem($item)
-    {
-        return isset($this->inventory[$item]);
     }
 
     public function addSkill($skill)

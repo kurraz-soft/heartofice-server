@@ -26,7 +26,7 @@ $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
     {
         if($gamePage->character->hasSkill(\app\library\SkillsLibrary::SHOOTING)
             && $gamePage->character->hasItem(\app\library\ItemsLibrary::GUN)
-            && $gamePage->character->hasItem(\app\library\ItemsLibrary::GUN_AMMO)
+            && $gamePage->character->inventory[\app\library\ItemsLibrary::GUN]->count
         )
         {
             $gamePage->addAnswer('Выстрелить из пистолета', 79);

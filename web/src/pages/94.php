@@ -28,7 +28,7 @@
 <?php
 
 $ground = new \app\models\Inventory();
-$ground->add(\app\library\ItemsLibrary::FOOD_PACK, 8);
+$ground->add(\app\library\ItemsLibrary::FOOD_PACK, 1, 0, 8);
 
 $this->setScenario('takeItems');
 

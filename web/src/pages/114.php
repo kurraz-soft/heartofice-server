@@ -40,7 +40,7 @@
 $this->setScenario('takeItems');
 
 $inv = new \app\models\Inventory();
-$inv->add(\app\library\ItemsLibrary::KNIFE,2);
+$inv->add(\app\library\ItemsLibrary::KNIFE,1,0,2);
 
 $this->params = [
     'takeItems' => $inv->toArray(),

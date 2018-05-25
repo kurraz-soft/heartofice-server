@@ -7,6 +7,8 @@
 namespace app\models;
 
 
+use app\library\ItemsLibrary;
+
 class Inventory implements \ArrayAccess
 {
     public $maxWeight = 0;
@@ -42,48 +44,80 @@ class Inventory implements \ArrayAccess
 
     public function offsetExists($offset)
     {
-        return isset($this->items[$offset]);
+        foreach ($this->items as $item)
+        {
+            if($item->name === $offset) return true;
+        }
+
+        return false;
     }
 
     public function offsetGet($offset)
     {
-        return $this->items[$offset]->count;
+        $item_found = null;
+        foreach ($this->items as $item)
+        {
+            if($item->name === $offset)
+            {
+                if($item_found === null || $item->count < $item_found->count)
+                    $item_found = $item;
+            }
+        }
+
+        return $item_found;
     }
 
+    /**
+     * @param mixed $offset
+     * @param Item $value
+     * @throws \Exception
+     */
     public function offsetSet($offset, $value)
     {
-        $this->items[$offset] = new Item([
-            'name' => $offset,
-            'count' => $value,
-        ]);
+        $item = $this[$offset];
+
+        if($item) $item = $value;
+        else $this->add($value->name, $value->count, $value->price);
     }
 
     public function offsetUnset($offset)
     {
-        unset($this->items[$offset]);
+        $item_found = null;
+        foreach ($this->items as $k => $item)
+        {
+            if($item->name === $offset)
+            {
+                unset($this->items[$k]);
+                break;
+            }
+        }
     }
 
     /**
      * @param $item_name
      * @param int $cnt
      * @param int $price
+     * @param int $quantity
      * @throws \Exception
      */
-    public function add($item_name, $cnt = 1, $price = 0)
+    public function add($item_name, $cnt = 1, $price = 0, $quantity = 1)
     {
-        $item = new Item([
-            'name' => $item_name,
-            'count' => $cnt,
-            'price' => $price,
-        ]);
-        $this->items[$item->name] = $item;
+        for($i = 0; $i < $quantity; $i++)
+        {
+            $item = new Item([
+                'name' => $item_name,
+                'count' => $cnt,
+                'price' => $price,
+            ]);
+            $this->items[] = $item;
 
-        if($this->maxWeight && $this->getWeightSum() > $this->maxWeight) throw new \Exception('Inventory capacity exceeded');
+            if($this->maxWeight && $this->getWeightSum() > $this->maxWeight) throw new \Exception('Inventory capacity exceeded');
+        }
     }
 
     public function remove($item_name)
     {
-        unset($this->items[$item_name]);
+        unset($this[$item_name]);
     }
 
     public function getWeightSum()
@@ -91,7 +125,7 @@ class Inventory implements \ArrayAccess
         $sum = 0;
         foreach ($this->items as $item)
         {
-            $sum += $item->weight * $item->count;
+            $sum += $item->weight;
         }
 
         return $sum;

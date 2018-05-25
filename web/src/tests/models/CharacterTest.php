@@ -28,10 +28,9 @@ class CharacterTest extends UnitTestCase
 
     public function testAddToInventory()
     {
-        $this->character->addToInventory(ItemsLibrary::GUN_AMMO, 1);
-        $this->character->addToInventory(ItemsLibrary::GUN_AMMO, 1);
+        $this->character->addToInventory(ItemsLibrary::GUN, 2);
 
-        $this->assertEquals(2, $this->character->inventory[ItemsLibrary::GUN_AMMO]);
+        $this->assertArrayHasKey(ItemsLibrary::GUN, $this->character->inventory);
     }
 
     public function testRemoveFromInventory()
@@ -40,13 +39,5 @@ class CharacterTest extends UnitTestCase
         $this->character->removeFromInventory(ItemsLibrary::GUN);
 
         $this->assertArrayNotHasKey(ItemsLibrary::GUN, $this->character->inventory);
-    }
-
-    public function testSetInventoryItem()
-    {
-        $this->character->addToInventory(ItemsLibrary::GUN_AMMO, 1);
-        $this->character->setInventoryItem(ItemsLibrary::GUN_AMMO, 2);
-
-        $this->assertEquals(2, $this->character->inventory[ItemsLibrary::GUN_AMMO]);
     }
 }
