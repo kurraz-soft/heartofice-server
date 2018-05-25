@@ -1,0 +1,12 @@
+{
+    "name": "kurraz-soft/heartofice",
+    "authors": [
+        {
+            "name": "kurraz",
+            "email": "elfd01@gmail.com"
+        }
+    ],
+    "require": {
+        "phalcon/incubator": "^3.0"
+    }
+}

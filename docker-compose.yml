@@ -1,0 +1,15 @@
+version: '3'
+services:
+  web:
+    build: ./web
+    environment:
+      XDEBUG_CONFIG: "remote_host=10.0.75.1"
+      PHP_IDE_CONFIG: "serverName=192.168.0.103"
+    volumes:
+      - ./web/src:/var/www/html
+      - ./web/php:/usr/local/etc/php
+    ports:
+      - "8000:80"
+    expose:
+      - "9000"
+
