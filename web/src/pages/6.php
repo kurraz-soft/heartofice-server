@@ -11,7 +11,12 @@
 </p>
 
 <?php
-$this->addAnswer('Попытаться установить связь с Глоси', $this->character->hasSkill(\app\library\SkillsLibrary::CYBERNETIC?116:138));
+if(!$this->character->hasKeyword(\app\library\KeywordsLibrary::NEMESIS)
+        && !$this->character->hasKeyword(\app\library\KeywordsLibrary::HUMBABA)
+    )
+    {
+        $this->addAnswer('Попытаться связаться с Глоси', $this->character->hasSkill(\app\library\SkillsLibrary::CYBERNETIC) ? 116 : 138);
+    }
 $this->addAnswer('Почитать о Сердце Волента', $this->character->hasSkill(\app\library\SkillsLibrary::KNOWLEDGE?160:182));
 $this->addAnswer('Покинуть библиотеку', 73);
 ?>

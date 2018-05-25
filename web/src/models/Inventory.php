@@ -7,31 +7,32 @@
 namespace app\models;
 
 
-use app\library\ItemsLibrary;
-
 class Inventory implements \ArrayAccess
 {
     public $maxWeight = 0;
+    public $takeLimit = 0;
 
     /**
      * @var Item[]
      */
     public $items = [];
 
-    public function __construct($maxWeight = 0)
+    public function __construct($maxWeight = 0, $takeLimit = 0)
     {
         $this->maxWeight = $maxWeight;
+        $this->takeLimit = $takeLimit;
     }
 
     /**
      * @param $data
      * @param int $maxWeight
+     * @param int $takeLimit
      * @return Inventory
      * @throws \Exception
      */
-    static public function fromArray($data, $maxWeight = 0)
+    static public function fromArray($data, $maxWeight = 0, $takeLimit = 0)
     {
-        $inv = new Inventory($maxWeight);
+        $inv = new Inventory($maxWeight, $takeLimit);
 
         if(isset($data['items']))
             foreach ($data['items'] as $item)
@@ -136,6 +137,7 @@ class Inventory implements \ArrayAccess
         $ret = [
             'items' => [],
             'maxWeight' => $this->maxWeight,
+            'takeLimit' => $this->takeLimit,
         ];
 
         foreach ($this->items as $item)

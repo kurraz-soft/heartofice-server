@@ -21,4 +21,5 @@ class KeywordsLibrary
     const RED = 'Красный';
     const BLUE = 'Синий';
     const YELLOW = 'Желтый';
+    const MOON = 'Лунный';
 }

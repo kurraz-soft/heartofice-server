@@ -34,8 +34,12 @@
 
 $this->setScenario('takeItems');
 
-$inv = new \app\models\Inventory();
-$inv->add(\app\library\ItemsLibrary::GUN);
+$inv = new \app\models\Inventory(0, 4);
+$inv->add(\app\library\ItemsLibrary::GUN, 3,0,2);
+$inv->add(\app\library\ItemsLibrary::FLASHLIGHT);
+$inv->add(\app\library\ItemsLibrary::MEDPACK);
+$inv->add(\app\library\ItemsLibrary::SOUND_GRENADE);
+$inv->add(\app\library\ItemsLibrary::FOOD_PACK,1,0,3);
 
 $this->params = [
     'takeItems' => $inv->toArray(),
