@@ -40,4 +40,11 @@ class CharacterTest extends UnitTestCase
 
         $this->assertArrayNotHasKey(ItemsLibrary::GUN, $this->character->inventory);
     }
+
+    public function testDecreaseInventoryItemCnt()
+    {
+        $this->character->addToInventory(ItemsLibrary::GUN, 6);
+
+        $this->assertEquals(5, $this->character->inventory[ItemsLibrary::GUN]->count);
+    }
 }
