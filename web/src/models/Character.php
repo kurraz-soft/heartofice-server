@@ -7,6 +7,8 @@
 namespace app\models;
 
 
+use app\library\ItemsLibrary;
+
 class Character
 {
     const INVENTORY_MAX_WEIGHT = 8;
@@ -74,6 +76,11 @@ class Character
         return isset($this->inventory[$item]);
     }
 
+    public function hasLoadedFirearm($item = ItemsLibrary::GUN)
+    {
+        return $this->hasItem($item) && $this->inventory[$item]->count;
+    }
+
     public function addKeyword($word)
     {
         if(!$this->hasKeyword($word))
@@ -83,7 +90,11 @@ class Character
     public function removeKeyword($word)
     {
         if($this->hasKeyword($word))
+        {
             unset($this->keywords[array_search($word, $this->keywords)]);
+            $this->keywords = array_values($this->keywords);
+        }
+
     }
 
     public function hasKeyword($word)
@@ -99,6 +110,12 @@ class Character
     public function addSkill($skill)
     {
         if(!$this->hasSkill($skill)) $this->skills[] = $skill;
+    }
+
+    public function removeSkill($skill)
+    {
+        unset($this->skills[array_search($skill, $this->skills)]);
+        $this->skills = array_values($this->skills);
     }
 
     public function addHealth($add)

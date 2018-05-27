@@ -45,6 +45,8 @@ class CharacterTest extends UnitTestCase
     {
         $this->character->addToInventory(ItemsLibrary::GUN, 6);
 
+        $this->character->decreaseInventoryItemCnt(ItemsLibrary::GUN, 1);
+
         $this->assertEquals(5, $this->character->inventory[ItemsLibrary::GUN]->count);
     }
 }

@@ -25,9 +25,11 @@ class InventoryTest extends UnitTestCase
                     "count" => 6,
                     "weight" => 1,
                     "price" => 0,
+                    "type" => 'firearm',
                 ],
             ],
             'maxWeight' => 8,
+            'takeLimit' => 0,
         ], $inv->toArray());
     }
 

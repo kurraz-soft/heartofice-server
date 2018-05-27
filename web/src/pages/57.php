@@ -42,14 +42,11 @@
 </p>
 <?php
 
-$ground = new \app\models\Inventory();
-$ground->add(\app\library\ItemsLibrary::MINI_GLOSY);
+$this->attachCalculations(function ($e, \app\models\GamePage $gamePage){
 
-$this->setScenario('takeItems');
+    $gamePage->character->addToInventory(\app\library\ItemsLibrary::MINI_GLOSY);
 
-$this->params = [
-    'takeItems' => $ground->toArray(),
-];
+});
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
