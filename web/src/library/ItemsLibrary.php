@@ -39,6 +39,7 @@ class ItemsLibrary
         self::AEROCAR_SCAT => 0,
         self::CYBORG_PARTS => 0,
         self::MINI_GLOSY => 0,
+        self::BURREK => 0,
     ];
 
     const TYPE_FIREARM = 'firearm';

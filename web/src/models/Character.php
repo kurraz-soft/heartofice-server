@@ -81,6 +81,11 @@ class Character
         return $this->hasItem($item) && $this->inventory[$item]->count;
     }
 
+    public function hasUsablePsy($skill)
+    {
+        return $this->hasSkill($skill) && $this->hasItem(ItemsLibrary::PSY_FOCUSER);
+    }
+
     public function addKeyword($word)
     {
         if(!$this->hasKeyword($word))
