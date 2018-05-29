@@ -42,4 +42,15 @@ class InventoryTest extends UnitTestCase
 
         $this->assertEquals(2, $inv->getWeightSum());
     }
+
+    public function testGetQuantity()
+    {
+        $inv = new Inventory();
+
+        $inv->add(ItemsLibrary::FOOD_PACK);
+        $inv->add(ItemsLibrary::FOOD_PACK);
+        $inv->add(ItemsLibrary::FOOD_PACK);
+
+        $this->assertEquals(3, $inv->getQuantity(ItemsLibrary::FOOD_PACK));
+    }
 }
