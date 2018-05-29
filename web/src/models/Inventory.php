@@ -132,6 +132,19 @@ class Inventory implements \ArrayAccess
         return $sum;
     }
 
+    public function getQuantity($item_name)
+    {
+        $n = 0;
+
+        foreach ($this->items as $item)
+        {
+            if($item->name === $item_name)
+                $n++;
+        }
+
+        return $n;
+    }
+
     public function toArray()
     {
         $ret = [

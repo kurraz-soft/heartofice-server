@@ -6,7 +6,7 @@ $this->setScenario('shop');
 
 $inv = new \app\models\Inventory();
 $inv->add(\app\library\ItemsLibrary::GUN, 2, 5, 2);
-$inv->add(\app\library\ItemsLibrary::FOOD_PACK, 10, 2, 5);
+$inv->add(\app\library\ItemsLibrary::FOOD_PACK, 1, 2, 5);
 
 $this->params = [
     'shop' => $inv->toArray(),
