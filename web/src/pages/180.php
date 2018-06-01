@@ -2,10 +2,13 @@
 /**
  * @var \app\models\GamePage $this
  */
+
+$spend_health = 2;
 ?>
 <p>
-    <span class="font-italic">(-2 здоровья)</span>
+    <span class="font-italic">(-<?= $spend_health ?> здоровья)</span>
 </p>
+<?php if($this->character->health > $spend_health): ?>
 <p>
 Сил, чтобы двигаться у вас не осталось, и вы
 тяжело опускаетесь на край скамейки. Наконец, думая, что вы полностью беспомощны, убийцы открывают дверь парной. «Потащили тело к барону — надо
@@ -26,10 +29,15 @@
 спальню. Однако вокруг слишком много народа, поэтому они раздумывают преследовать вас и растворяются в ночи. Вы также не стремитесь в бой, чувствуя
 себя обессиленным после заключения в парной.
 </p>
+<?php endif; ?>
 <?php
+
+$this->attachCalculations(function ($e, \app\models\GamePage $gamePage) use ($spend_health){
+    $gamePage->character->addHealth(-$spend_health);
+});
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->addAnswer('Продолжить...', 92);
+    $gamePage->addAnswer('Продолжить...', $gamePage->character->health>0?92:'end_health');
 
 });

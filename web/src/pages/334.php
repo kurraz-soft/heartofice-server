@@ -37,8 +37,14 @@ $this->attachCalculations(function ($e, \app\models\GamePage $gamePage) use ($sp
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->addAnswer('«Марко Поло» - 12 скадов', $gamePage->character->hasItem(\app\library\ItemsLibrary::ID_CARD) ? 222 : 286);
-    $gamePage->addAnswer('«Парадиз» - 6 скадов', 244);
-    $gamePage->addAnswer('«Постоялом дворе Дожа» - 3 скадов', 371);
+    $gamePage->addAnswer('«Марко Поло» - 12 скадов', $gamePage->character->hasItem(\app\library\ItemsLibrary::ID_CARD) ? 222 : 286, function ($e, \app\models\GamePage $gamePage){
+        $gamePage->character->spendMoney(12);
+    });
+    $gamePage->addAnswer('«Парадиз» - 6 скадов', 244, function ($e, \app\models\GamePage $gamePage){
+        $gamePage->character->spendMoney(6);
+    });
+    $gamePage->addAnswer('«Постоялом дворе Дожа» - 3 скадов', 371,function ($e, \app\models\GamePage $gamePage){
+        $gamePage->character->spendMoney(3);
+    });
 
 });

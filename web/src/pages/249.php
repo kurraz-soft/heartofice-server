@@ -24,6 +24,7 @@ $spend_health = $this->character->hasSkill(\app\library\SkillsLibrary::SURVIVAL)
 путь. Голод и порывы ледяного ветра высасывают
 ваши силы. Непроницаемый свод серых туч на небе
 подавляет вас. Когда вы доходите до восточных предгорий, ваши пальцы сводит судорогой от начинающегося обморожения.
+<span class="font-italic">(-<?= $spend_health ?> здоровья)</span>
 </p>
 <?php if($this->character->health > $spend_health): ?>
 <p>
@@ -44,7 +45,7 @@ $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
     if($gamePage->character->health > 0)
     {
-        $gamePage->addAnswer('Продолжить...', $gamePage->character->hasSkill(\app\library\SkillsLibrary::STREET_KNOWLEDGE ? 117 : 438));
+        $gamePage->addAnswer('Продолжить...', $gamePage->character->hasSkill(\app\library\SkillsLibrary::STREET_KNOWLEDGE) ? 117 : 438);
     }else
         $gamePage->addAnswer('Продолжить...', 'end_health');
 
