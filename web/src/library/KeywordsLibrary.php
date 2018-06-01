@@ -22,4 +22,8 @@ class KeywordsLibrary
     const BLUE = 'Синий';
     const YELLOW = 'Желтый';
     const MOON = 'Лунный';
+
+    const USED_RETROVIRUS_BIG_POWER_UP = 'Использован Большой Усилитель';
+    const USED_RETROVIRUS_NIGHT_VISION = 'Использована Маска затмения';
+    const USED_RETROVIRUS_CHAMELEON_SKIN = 'Использован Несравненный проницат';
 }

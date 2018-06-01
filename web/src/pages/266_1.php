@@ -13,7 +13,7 @@ $spend_health = $this->character->hasSkill(\app\library\SkillsLibrary::MELEE_FIG
 
 $this->attachCalculations(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->character->spendMoney(10);
+    $gamePage->character->spendMoney(7);
 
     $gamePage->character->healthMax += 5;
     $gamePage->character->addHealth(5);
@@ -28,6 +28,6 @@ $this->attachCalculations(function ($e, \app\models\GamePage $gamePage){
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->addAnswer('Продолжить...', 434);
+    $gamePage->addAnswer('Продолжить...', 266);
 
 });

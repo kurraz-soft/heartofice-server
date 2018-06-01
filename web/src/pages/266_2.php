@@ -13,12 +13,12 @@ $spend_health = 0;
 
 $this->attachCalculations(function ($e, \app\models\GamePage $gamePage) use ($spend_health){
     $gamePage->character->addSkill(\app\library\SkillsLibrary::CHAMELEON_SKIN);
-    $gamePage->character->spendMoney(9);
+    $gamePage->character->spendMoney(6);
     $gamePage->character->addKeyword(\app\library\KeywordsLibrary::USED_RETROVIRUS_CHAMELEON_SKIN);
 });
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->addAnswer('Продолжить...', 434);
+    $gamePage->addAnswer('Продолжить...', 266);
 
 });

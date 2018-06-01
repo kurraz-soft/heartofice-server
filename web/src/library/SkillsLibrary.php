@@ -10,6 +10,7 @@ namespace app\library;
 class SkillsLibrary
 {
     const AGILITY = 'Ловкость';
+    const SUPPRESSED_AGILITY = 'Подавленная ловкость';
     const MELEE_FIGHT = 'Рукопашный бой';
     const TRICKERY = 'Хитрость';
     const CYBERNETIC = 'Кибернетика';

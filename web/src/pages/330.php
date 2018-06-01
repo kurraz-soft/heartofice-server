@@ -22,6 +22,12 @@ $this->attachCalculations(function ($e, \app\models\GamePage $gamePage) use ($sp
         $gamePage->character->removeSkill(\app\library\SkillsLibrary::BIG_POWER_UP);
         $gamePage->character->healthMax -= 5;
         $gamePage->character->addHealth(0);
+        if ($gamePage->character->hasSkill(\app\library\SkillsLibrary::SUPPRESSED_AGILITY))
+        {
+            $gamePage->character->removeSkill(\app\library\SkillsLibrary::SUPPRESSED_AGILITY);
+            $gamePage->character->addSkill(\app\library\SkillsLibrary::AGILITY);
+        }
+
     }
 
     if($gamePage->character->hasSkill(\app\library\SkillsLibrary::NIGHT_VISION))

@@ -34,12 +34,19 @@
 
 $this->attachCalculations(function ($e, \app\models\GamePage $gamePage){
 
-    //TODO rework
-
 });
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->addAnswer('Продолжить...', $gamePage->character->hasSkill(\app\library\SkillsLibrary::STREET_KNOWLEDGE) ? 414 : 25);
+    if(!$gamePage->character->hasKeyword(\app\library\KeywordsLibrary::USED_RETROVIRUS_BIG_POWER_UP))
+        $gamePage->addAnswer('Большой усилитель - 7 скадов', '266_1');
+
+    if(!$gamePage->character->hasKeyword(\app\library\KeywordsLibrary::USED_RETROVIRUS_CHAMELEON_SKIN))
+        $gamePage->addAnswer('Маска затмения - 6 скадов', '266_2');
+
+    if(!$gamePage->character->hasKeyword(\app\library\KeywordsLibrary::USED_RETROVIRUS_NIGHT_VISION))
+        $gamePage->addAnswer('Несравненный проницат - 4 скадов', '266_3');
+
+    $gamePage->addAnswer('Закончить', $gamePage->character->hasSkill(\app\library\SkillsLibrary::STREET_KNOWLEDGE) ? 414 : 25);
 
 });
