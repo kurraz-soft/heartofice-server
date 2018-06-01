@@ -16,7 +16,7 @@ $this->attachCalculations(function ($e, \app\models\GamePage $gamePage){
 
     $gamePage->character->addHealth(1);
 
-    //TODO убрать таблетки антибиотика и аптечку?
+    $gamePage->character->removeFromInventory(\app\library\ItemsLibrary::ANTIDOTE_PILLS);
 });
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
