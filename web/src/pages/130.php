@@ -14,8 +14,6 @@
 
 $this->attachCalculations(function ($e, \app\models\GamePage $gamePage){
 
-    //TODO ???
-
 });
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
