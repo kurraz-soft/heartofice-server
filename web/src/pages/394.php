@@ -37,6 +37,8 @@ $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
     $gamePage->addAnswer('Купить или продать оружие или другие необычные предметы', 283);
     $gamePage->addAnswer('Заплатить за генетические улучшения', 434);
-    $gamePage->addAnswer('Закончить с покупками', $gamePage->character->hasSkill(\app\library\SkillsLibrary::STREET_KNOWLEDGE)?414:25);
+        $gamePage->addAnswer('Закончить с покупками',
+        ($gamePage->character->hasSkill(\app\library\SkillsLibrary::STREET_KNOWLEDGE)
+            || $gamePage->character->hasItem(\app\library\ItemsLibrary::GUIDEBOOK)) ? 414 : 25);
 
 });

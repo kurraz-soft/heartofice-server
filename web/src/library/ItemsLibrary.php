@@ -34,7 +34,7 @@ class ItemsLibrary
     const SHORT_SWORD = 'Короткий меч';
     const STASIS_BOMB = 'Стазис-бомба';
     const LEAN_KILLER_CAN = 'Канистра с истребителем лиан';
-    const GUIDEBOOK = 'Путиводитель';
+    const GUIDEBOOK = 'Путеводитель';
     const CROSSBOW = 'Арбалет';
 
     const WEIGHTS = [

@@ -39,7 +39,7 @@ class GamePage implements EventsAwareInterface
      */
     public $scenario = '';
 
-    public $params;
+    public $params = [];
 
     /**
      * @var ManagerInterface

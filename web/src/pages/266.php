@@ -38,15 +38,17 @@ $this->attachCalculations(function ($e, \app\models\GamePage $gamePage){
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
-    if(!$gamePage->character->hasKeyword(\app\library\KeywordsLibrary::USED_RETROVIRUS_BIG_POWER_UP))
+    if(!$gamePage->character->hasKeyword(\app\library\KeywordsLibrary::USED_RETROVIRUS_BIG_POWER_UP) && $gamePage->character->money >= 7)
         $gamePage->addAnswer('Большой усилитель - 7 скадов', '266_1');
 
-    if(!$gamePage->character->hasKeyword(\app\library\KeywordsLibrary::USED_RETROVIRUS_CHAMELEON_SKIN))
+    if(!$gamePage->character->hasKeyword(\app\library\KeywordsLibrary::USED_RETROVIRUS_CHAMELEON_SKIN) && $gamePage->character->money >= 6)
         $gamePage->addAnswer('Маска затмения - 6 скадов', '266_2');
 
-    if(!$gamePage->character->hasKeyword(\app\library\KeywordsLibrary::USED_RETROVIRUS_NIGHT_VISION))
+    if(!$gamePage->character->hasKeyword(\app\library\KeywordsLibrary::USED_RETROVIRUS_NIGHT_VISION) && $gamePage->character->money >= 4)
         $gamePage->addAnswer('Несравненный проницат - 4 скадов', '266_3');
 
-    $gamePage->addAnswer('Закончить', $gamePage->character->hasSkill(\app\library\SkillsLibrary::STREET_KNOWLEDGE) ? 414 : 25);
+        $gamePage->addAnswer('Закончить',
+        ($gamePage->character->hasSkill(\app\library\SkillsLibrary::STREET_KNOWLEDGE)
+            || $gamePage->character->hasItem(\app\library\ItemsLibrary::GUIDEBOOK)) ? 414 : 25);
 
 });

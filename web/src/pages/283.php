@@ -33,6 +33,8 @@
 </p>
 <?php
 
+$this->setScenario('shop');
+
 $inv = new \app\models\Inventory();
 $inv->add(\app\library\ItemsLibrary::GUN, 6, 16, 2);
 $inv->add(\app\library\ItemsLibrary::PSY_FOCUSER,1,18,1);
@@ -59,6 +61,8 @@ $this->params = [
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->addAnswer('Продолжить...', $gamePage->character->hasSkill(\app\library\SkillsLibrary::STREET_KNOWLEDGE) ? 414 : 25);
+    $gamePage->addAnswer('Продолжить...',
+        ($gamePage->character->hasSkill(\app\library\SkillsLibrary::STREET_KNOWLEDGE)
+            || $gamePage->character->hasItem(\app\library\ItemsLibrary::GUIDEBOOK)) ? 414 : 25);
 
 });
