@@ -13,9 +13,9 @@ class Messager
     {
         $config = require __DIR__ . '/../config/config.php';
 
-        $text = "<h3>$subj</h3>" . $text;
+        $text = "<b>$subj</b>\n" . $text;
 
-        $url = "https://api.telegram.org/" . $config['messager']['token'] . "/sendMessage?chat_id=" . $config['messager']['chatId'];
+        $url = "https://api.telegram.org/bot{$config['messager']['token']}/sendMessage?chat_id={$config['messager']['chatId']}&parse_mode=html";
         $url = $url . "&text=" . urlencode($text);
         $ch = curl_init();
         $optArray = array(

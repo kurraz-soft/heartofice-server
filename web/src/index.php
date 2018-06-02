@@ -56,9 +56,12 @@ $app->post('/api/v1/report-bug',
     function () use ($app){
         $data = $app->request->getJsonRawBody(true);
 
+        $text = "Page: {$data['page']}\n";
+        $text .= "Message:\n" . (new \Phalcon\Escaper())->escapeHtml($data['text']);
+
         $res = \app\models\Messager::send(
             'New Bug Report',
-            (new \Phalcon\Escaper())->escapeHtml($data['text'])
+            $text
         );
 
         $app->response->setJsonContent([
