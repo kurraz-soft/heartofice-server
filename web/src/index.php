@@ -5,6 +5,8 @@ use app\models\GamePage;
 use app\models\Character;
 use app\models\GamePageLoader;
 
+require_once __DIR__ . '/vendor/autoload.php';
+
 $loader = new \Phalcon\Loader();
 
 //Register namespaces here
@@ -50,7 +52,30 @@ $app->post(
     }
 );
 
-$app->options('/api/v1/(next-page|load-page)', function () use ($app){
+$app->post('/api/v1/report-bug',
+    function () use ($app){
+        $data = $app->request->getJsonRawBody(true);
+
+        $config = require __DIR__ . '/config/config.php';
+
+        \app\models\Mailer::send(
+            $config['adminEmail'],
+            [
+                'name' => 'HeartOfIce Server',
+                'email' => 'notify@' . $_SERVER['SERVER_NAME']
+            ],
+            'New Bug Report',
+            (new \Phalcon\Escaper())->escapeHtml($data['text'])
+        );
+
+        $app->response->setJsonContent([
+            "status" => "OK",
+        ]);
+        $app->response->send();
+    }
+);
+
+$app->options('/api/v1/(next-page|load-page|report-bug)', function () use ($app){
     $app->response->setHeader('Access-Control-Allow-Methods', 'POST, GET');
     $app->response->setHeader('Access-Control-Allow-Headers', 'Content-Type');
     $app->response->setHeader('Access-Control-Max-Age', '86400');

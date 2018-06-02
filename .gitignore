@@ -1,3 +1,4 @@
 # IntelliJ project files
 .idea
 /web/src/vendor/*
+/web/src/config/config.php
