@@ -3,6 +3,7 @@ Heart Of Ice (server part)
 * Docker
 * Phalcon framework
 * REST api
+* Telegram bot for system messages
 
 Setup
 ---
