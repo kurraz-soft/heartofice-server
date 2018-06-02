@@ -16,3 +16,7 @@ Configure /config/config.php
 Run
 ---
 `docker-compose up`
+
+Demo
+---
+<http://hoi.kurraz-soft.com>
