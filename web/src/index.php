@@ -56,20 +56,13 @@ $app->post('/api/v1/report-bug',
     function () use ($app){
         $data = $app->request->getJsonRawBody(true);
 
-        $config = require __DIR__ . '/config/config.php';
-
-        \app\models\Mailer::send(
-            $config['adminEmail'],
-            [
-                'name' => 'HeartOfIce Server',
-                'email' => 'notify@' . $_SERVER['SERVER_NAME']
-            ],
+        $res = \app\models\Messager::send(
             'New Bug Report',
             (new \Phalcon\Escaper())->escapeHtml($data['text'])
         );
 
         $app->response->setJsonContent([
-            "status" => "OK",
+            'status' => $res?'OK':'FAIL',
         ]);
         $app->response->send();
     }

@@ -2,4 +2,8 @@
 
 return [
     'adminEmail' => 'example@example.com',
+    'messager' => [
+        'chatId' => '',
+        'token' => '',
+    ],
 ];
