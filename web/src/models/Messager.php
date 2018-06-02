@@ -13,6 +13,8 @@ class Messager
     {
         $config = require __DIR__ . '/../config/config.php';
 
+        $text = "<h3>$subj</h3>" . $text;
+
         $url = "https://api.telegram.org/" . $config['messager']['token'] . "/sendMessage?chat_id=" . $config['messager']['chatId'];
         $url = $url . "&text=" . urlencode($text);
         $ch = curl_init();
