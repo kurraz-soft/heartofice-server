@@ -14,11 +14,12 @@
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->addAnswer('Заплатить', 246, function ($e, \app\models\GamePage $gamePage){
+    if($gamePage->character->money >= 10)
+        $gamePage->addAnswer('Заплатить', 246, function ($e, \app\models\GamePage $gamePage){
 
-        $gamePage->character->spendMoney(10);
+            $gamePage->character->spendMoney(10);
 
-    });
+        });
     $gamePage->addAnswer('Не платить', 288);
 
 });

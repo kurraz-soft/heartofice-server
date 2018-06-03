@@ -24,9 +24,10 @@ $this->attachCalculations(function ($e, \app\models\GamePage $gamePage) use ($sp
 
 $this->attachDynamicAnswers(function ($e, \app\models\GamePage $gamePage){
 
-    $gamePage->addAnswer('Заплатить', 293, function ($e, \app\models\GamePage $gamePage){
-        $gamePage->character->spendMoney(3);
-    });
+    if($gamePage->character->money >= 3)
+        $gamePage->addAnswer('Заплатить', 293, function ($e, \app\models\GamePage $gamePage){
+            $gamePage->character->spendMoney(3);
+        });
     $gamePage->addAnswer('Не платить', 414);
 
 });
