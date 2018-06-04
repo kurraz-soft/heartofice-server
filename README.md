@@ -9,7 +9,7 @@ Setup
 ---
 `cp ./config/config.php.def ./config/config.php`
 
-Configure /config/config.php
+Configure ./web/src/config/config.php
 
 `docker-compose build`
 
